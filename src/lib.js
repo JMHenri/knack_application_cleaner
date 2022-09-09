@@ -1,10 +1,5 @@
-
 //todo jsdoc
-function removeDuplicates () {
+export function removeDuplicates (data) {
   //todo functionality
-  console.log('removeDuplicates')
+  return data;
 };
-
-module.exports = {
-  removeDuplicates,
-}

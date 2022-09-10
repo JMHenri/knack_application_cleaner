@@ -1,0 +1,121 @@
+{
+  "_id": "61e8666b010a37023e3d99a3",
+  "users": {
+    "enabled": true,
+    "scope": "scene",
+    "registration": "closed"
+  },
+  "ecommerce": {
+    "enabled": false
+  },
+  "counts": {
+    "total_entries": 0,
+    "asset_count": 0,
+    "asset_size": 0
+  },
+  "field_count": 31,
+  "thumb_count": 0,
+  "object_count": 5,
+  "task_count": 0,
+  "view_count": 10,
+  "scene_count": 9,
+  "credential_count": 0,
+  "status": "active",
+  "settings": {
+    "geo": false,
+    "timezone": "Eastern Time (US & Canada)",
+    "timezone_offset": "-18000",
+    "timezone_dst": "3600",
+    "cluster": "us-east",
+    "powered_by_link": false,
+    "new_count": true,
+    "registration_migration_status": "completed",
+    "https_redirect": true,
+    "should_purge_record_history": false,
+    "support_access": true,
+    "use_multiple_api_subdomains": false,
+    "scriptProtectionEnabled": true,
+    "embed_login_method": "cookies",
+    "ignoreBilling": false,
+    "v3_beta": false,
+    "v3_open_beta": true,
+    "mongo": "devenv",
+    "solr": "devenv"
+  },
+  "tasks": [
+    
+  ],
+  "payment_processors": [
+    
+  ],
+  "design": {
+    "general": {
+      "theme": "kn-beta",
+      "font": "Default (Roboto)",
+      "links": {
+        "color": "#43a1c6"
+      },
+      "buttons": {
+        "color": "#ffffff",
+        "bg_color": "#00396D"
+      },
+      "tables": {
+        "style": "clean",
+        "dividers": true,
+        "striped": true,
+        "hover": false,
+        "spacing": "m"
+      }
+    },
+    "regions": {
+      "body": {
+        "full_width": false
+      },
+      "header": {
+        "bg_color": "#023F74",
+        "menu": {
+          "show": true,
+          "user_auth_based": false,
+          "format": "buttons",
+          "color": "#ffffff",
+          "outline_or_fill_color": "#2f96b4"
+        },
+        "title": {
+          "color": "#ffffff",
+          "show_logo": false
+        }
+      }
+    },
+    "components": {
+      "notifications": {
+        "color": "#ffffff",
+        "bg_color": "#2f96b4"
+      }
+    }
+  },
+  "layout": {
+    "entry_scene_menu": true,
+    "app_menu_auth": true,
+    "theme": "kn-beta"
+  },
+  "copying": false,
+  "feature_flags": [
+    false
+  ],
+  "name": "New App",
+  "slug": "new-app",
+  "distributions": [
+    
+  ],
+  "versions": [
+    {
+      "_id": 1
+    },
+    {
+      "_id": 1
+    }
+  ],
+  "first_created": "2022-01-01T01:00:00.000Z",
+  "account_id": "5eb08b3c32ceea001d8d36c9",
+  "user_id": "5eb08b3c32ceea001d8d36c8"
+}

@@ -1,7 +1,14 @@
 import deepEqual from "deep-equal";
-//todo jsdoc
-
-
+/**
+ * This is a function.
+ *
+ * @param {object} data - the json data to be deduplicated.
+ * @return {object} clean data with duplicate elements removed.
+ *
+ * @example
+ *
+ *     removeDuplicates(jsonData);
+ */
 export function removeDuplicates (data) {
   //filter objects and scenes
   //since data structure may not always be id-nested entities, iterative loops are used.
@@ -10,14 +17,22 @@ export function removeDuplicates (data) {
 
 
   for (let i of data.versions) {
-    i.objects = filterDuplicates(i.objects);
-    i.scenes = filterDuplicates(i.scenes);
-    for(let j of i.objects) {
-      j.fields = filterDuplicates(j.fields);
+    if(i.hasOwnProperty('objects')) {
+      i.objects = filterDuplicates(i.objects);
+      for(let j of i.objects) {
+        if(j.hasOwnProperty('fields')){
+          j.fields = filterDuplicates(j.fields);
+        };
+      }
     }
-    for(let k of i.scenes) {
-      k.views = filterDuplicates(k.views);
-    }
+    if(i.hasOwnProperty('scenes')) {
+      i.scenes = filterDuplicates(i.scenes);
+      for(let k of i.scenes) {
+        if(k.hasOwnProperty('views')) {
+          k.views = filterDuplicates(k.views);
+        };
+      }
+    };
   }
   return data;
 };

@@ -1,20 +1,18 @@
-import { removeDuplicates } from './lib.js';
-import { promises as fs } from 'fs';
-import path from 'path';
-import {fileURLToPath} from 'url';
+const { removeKnackAppDuplicates } = require('./lib.js');
+const fs = require('fs').promises;
+const path = require('path');
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const OUTPUT_PATH = path.join(__dirname, '../output', 'clean_application.json');
+const MOCK_DATA_PATH = path.join(__dirname, '../data', 'mock_application.json');
 
 
-export async function readSampleAndRemoveDuplicates() {
-  const JSONSample = JSON.parse(await fs.readFile(path.join(__dirname, '../data', 'mock_application.json'), 'utf-8'));
-  const cleanJSON = removeDuplicates(JSONSample);
-  await writeToOutput(cleanJSON);
+async function cleanMockData() {
+  const JSONSample = JSON.parse(await fs.readFile(MOCK_DATA_PATH, 'utf-8'));
+  const cleanJSON = removeKnackAppDuplicates(JSONSample);
+  await fs.writeFile(OUTPUT_PATH, JSON.stringify(cleanJSON));
 };
 
-export async function writeToOutput(cleanJSON) {
-  await fs.writeFile(path.join(__dirname, '../output', 'clean_application.json'), JSON.stringify(cleanJSON));
-}
 
-readSampleAndRemoveDuplicates();
+module.exports = {cleanMockData, OUTPUT_PATH}
+
+cleanMockData();

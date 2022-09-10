@@ -1,20 +1,18 @@
-import deepEqual from "deep-equal";
 /**
- * This is a function.
+ * Removes duplicate Knack Application data from a knack application file.
  *
  * @param {object} data - the json data to be deduplicated.
  * @return {object} clean data with duplicate elements removed.
  *
  * @example
  *
- *     removeDuplicates(jsonData);
+ *     removeKnackAppDuplicates(jsonData);
  */
-export function removeDuplicates (data) {
+function removeKnackAppDuplicates (data) {
   //filter objects and scenes
   //since data structure may not always be id-nested entities, iterative loops are used.
   let uniqueIds = [];
   data.versions = filterDuplicates(data.versions);
-
 
   for (let i of data.versions) {
     if(i.hasOwnProperty('objects')) {
@@ -50,18 +48,20 @@ function filterDuplicates(arr) {
     }
     return false;
   });
-
   return unique;
 }
 
+module.exports = {
+  removeKnackAppDuplicates,
+}
 
 /*  what a recursive implementation could look like
-function removeDuplicates(el, field){
+function removeKnackAppDuplicates(el, field){
   let uniqueIds = [];
   el = el.filter( ... );
   if (field === "versions"){
-    removeDuplicates(el.objects);
-    removeDuplicates(el.scenes);
+    removeKnackAppDuplicates(el.objects);
+    removeKnackAppDuplicates(el.scenes);
   }
   if (field === ...){
     ...

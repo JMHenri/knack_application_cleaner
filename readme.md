@@ -20,3 +20,5 @@ Data structures which are checked for duplicates are.
 `npm run main`
 
 Output is printed to the output directory as "clean_application.json".
+
+Be sure to `npm install` before running.

@@ -1,5 +1,24 @@
+const fs = require('fs').promises;
+
 /**
- * Removes duplicate Knack Application data from a knack application file.
+ * Reads in a given input file, removes duplicates, and prints it to output.
+ *
+ * @param {object} input - the path for the input file.
+ * @param {object} output - the path for the output file.
+ *
+ * @example
+ *
+ *     cleanMockData(path_to_input, path_to_output);
+ */
+async function cleanMockData(input, output) {
+  const JSONSample = JSON.parse(await fs.readFile(input, 'utf-8'));
+  const cleanJSON = removeKnackAppDuplicates(JSONSample);
+  await fs.writeFile(output, JSON.stringify(cleanJSON));
+};
+
+
+/**
+ * Removes duplicate Knack Application data from a given knack application JSON object
  *
  * @param {object} data - the json data to be deduplicated.
  * @return {object} clean data with duplicate elements removed.
@@ -51,8 +70,9 @@ function filterDuplicates(arr) {
   return unique;
 }
 
+
 module.exports = {
-  removeKnackAppDuplicates,
+  removeKnackAppDuplicates, cleanMockData
 }
 
 /*  what a recursive implementation could look like

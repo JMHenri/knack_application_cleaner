@@ -1,15 +1,8 @@
 const fs = require('fs');
-const { removeKnackAppDuplicatesnackAppDuplicates } = require('../src/lib.js');
+const { removeKnackAppDuplicates, cleanMockData } = require('../src/lib.js');
 const path = require('path');
-const {fileURLToPath} = require('url');
 const chai = require('chai');
-const run = require('../src/run.js');
-const rewire = require('rewire');
-const run_rewire = rewire('../src/run');
 
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 describe('duplicate detection', function() {
   it('should detect version duplicates', function() {
@@ -33,12 +26,10 @@ describe('duplicate detection', function() {
 });
 
 describe('Duplicate remover', function() {
-  before(function() {
-    this.test_input_path = (__dirname, './test_data/mock_application_field_duplicates.json');
+  before(async function() {
+    this.test_input_path = (__dirname, './test/test_data/mock_application_field_duplicates.json');
     this.test_output_path = path.join(__dirname, './test_output/clean_application.json');
-    run_rewire.__set__('MOCK_DATA_PATH', this.test_input_path);
-    run_rewire.__set__('OUTPUT_PATH', this.test_output_path);
-    run.cleanMockData();
+    await cleanMockData(this.test_input_path, this.test_output_path);
   });
   after(function() {
     fs.unlinkSync(this.test_output_path);
